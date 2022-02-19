@@ -1,4 +1,4 @@
-job('example') {
+job('example1') {
     logRotator(-1, 10)
     jdk('Java 8')
     scm {
