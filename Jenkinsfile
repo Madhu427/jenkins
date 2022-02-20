@@ -35,7 +35,7 @@ URL1 = "www.google.com"
 stages {
 stage(one) {
 steps {
-sh 'echo ${URL1}''
+sh 'echo ${URL1}'
 }
 }
 }
