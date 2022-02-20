@@ -31,14 +31,14 @@ pipeline {
 agent any
 environment{
 URL1 = "www.google.com"
-SSH = credentials("common/ssh")
+SSH = credentials("CENTOS")
 }
 stages {
 stage(one) {
 steps {
 sh 'echo ${URL1}'
 sh 'env'
-sh 'echo ${SSH} | base64'
+
 
 }
 }
