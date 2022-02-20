@@ -32,6 +32,7 @@ agent any
 environment{
 URL1 = "www.google.com"
 SSH = credentials("CENTOS")
+SSH1 = credentials("common/ssh")
 }
 stages {
 stage(one) {
@@ -39,8 +40,7 @@ steps {
 sh 'echo ${URL1}'
 sh 'env'
 sh 'echo ${SSH}'
-
-
+sh 'echo ${SSH1} | base64'
 }
 }
 }
