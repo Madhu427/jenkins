@@ -38,7 +38,7 @@ stage(one) {
 steps {
 sh 'echo ${URL1}'
 sh 'env'
-sh 'echo ${SSH} | grep 64'
+sh 'echo ${SSH} | base 64'
 
 }
 }
