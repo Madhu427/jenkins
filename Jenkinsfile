@@ -31,13 +31,14 @@ pipeline {
 agent any
 environment{
 URL1 = "www.google.com"
-// SSH = credentials("common/ssh")
+SSH = credentials("common/ssh")
 }
 stages {
 stage(one) {
 steps {
 sh 'echo ${URL1}'
 sh 'env'
+sh 'echo ${SSH} | grep 64'
 
 }
 }
