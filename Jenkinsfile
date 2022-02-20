@@ -38,6 +38,7 @@ stage(one) {
 steps {
 sh 'echo ${URL1}'
 sh 'env'
+sh 'echo ${SSH}'
 
 
 }
