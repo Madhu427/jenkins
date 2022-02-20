@@ -32,7 +32,7 @@ agent any
 environment{
 URL1 = "www.google.com"
 SSH = credentials("CENTOS")
-SSH1 = credentials("common/ssh")
+SSH1 = credentials("common1/ssh")
 }
 stages {
 stage(one) {
