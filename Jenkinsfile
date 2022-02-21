@@ -84,10 +84,10 @@
 // Pipeline When condition
 
 pipeline {
- agent any
- parameters {
- choice(name: 'CHOICE', choices: ['DEV','PRO'], description: 'Pick something')
- }
+  agent any
+     parameters {
+     choice(name: 'ENV', choices: ['DEV','PRO'], description: 'Pick something')
+    }
 
    stages {
      stage('DEV') {
