@@ -49,33 +49,64 @@
 
 // Pipeline parameters
 
+// pipeline {
+//     agent any
+//     parameters {
+//         string(name: 'PERSON', defaultValue: '', description: 'Who should I say hello to?')
+//
+//         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+//
+//         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+//
+//         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+//
+//         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+//     }
+//     stages {
+//         stage('Example') {
+//             steps {
+//                 echo "Hello ${params.PERSON}"
+//
+//                 echo "Biography: ${params.BIOGRAPHY}"
+//
+//                 echo "Toggle: ${params.TOGGLE}"
+//
+//                 echo "Choice: ${params.CHOICE}"
+//
+//                 echo "Password: ${params.PASSWORD}"
+//             }
+//         }
+//     }
+// }
+
+
+
+// Pipeline When condition
+
 pipeline {
-    agent any
-    parameters {
-        string(name: 'PERSON', defaultValue: '', description: 'Who should I say hello to?')
+ agent any
+ parameters {
+ choice(name: 'CHOICE', choices: ['DEV'.'PRO'], description: 'Pick something')
+ }
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+   stages {
+     stage(DEV) {
+      when {
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
-    stages {
-        stage('Example') {
+                     environment name: 'ENV', value: 'DEV'
+                 }
             steps {
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
+            echo "DEV"
             }
-        }
-    }
-}
+     }
+     stage(PRO) {
+     when {
 
+                          environment name: 'ENV', value: 'PRO'
+                      }
+                 steps {
+                 echo "PRO"
+                 }
+          }
+   }
+ }
