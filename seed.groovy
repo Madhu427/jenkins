@@ -35,7 +35,7 @@ job('example1') {
 //      'lightweight'(true)
 //    }
 //  }
-//}
+//
 
 
 folder('CI-Pipelines') {
@@ -43,7 +43,7 @@ folder('CI-Pipelines') {
     description('CI-Pipelines')
 }
 
-pipelineJob('CI-Pipelines/cart') {
+pipelineJob('CI-Pipelines/cart1') {
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -58,7 +58,7 @@ pipelineJob('CI-Pipelines/cart') {
           }
         }
       }
-      'scriptPath'('JenkinsFile')
+      'scriptPath'('Jenkinsfile')
       'lightweight'(true)
     }
   }
