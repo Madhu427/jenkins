@@ -43,7 +43,7 @@ folder('CI-Pipelines') {
     description('CI-Pipelines')
 }
 
-def COMPONENTS = ["cart1","catalogue1"]
+def COMPONENTS = ["cart1","catalogue1","user1","dispatch1","shipping1","payment1"]
 
 def SIZE = COMPONENTS.size -1
 
