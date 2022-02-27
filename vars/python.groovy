@@ -15,11 +15,12 @@ def call() {
 
 
         stages{
-            stage('Compile the code') {
-                steps{
-                    sh 'echo compile the ${COMPONENT}  code'
-                }
-            }
+            // for nodejs and python no need to compile the code
+//            stage('Compile the code') {
+//                steps{
+//                    sh 'echo compile the ${COMPONENT}  code'
+//                }
+//            }
             stage('Test the code') {
                 steps{
                     sh 'echo test the code'
@@ -29,6 +30,12 @@ def call() {
                 steps{
                     sh 'echo deploy the code'
                 }
+            }
+        }
+
+        post {
+            always {
+                cleanws()
             }
         }
 
