@@ -18,6 +18,7 @@ def call() {
             stage('Compile the code') {
                 steps{
                     sh 'echo compile the ${COMPONENT}  code'
+                    sh 'mvn compile'
                 }
             }
             stage('Test the code') {
