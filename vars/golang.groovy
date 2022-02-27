@@ -8,7 +8,7 @@ def call() {
 
         triggers {
 
-            pollSCM('*/1 * * * *')
+            pollSCM('*/2 * * * *')
 
 
         }
