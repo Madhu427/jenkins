@@ -43,23 +43,31 @@ folder('CI-Pipelines') {
     description('CI-Pipelines')
 }
 
-pipelineJob('CI-Pipelines/cart1') {
-  configure { flowdefinition ->
-    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
-      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
-        'userRemoteConfigs' {
-          'hudson.plugins.git.UserRemoteConfig' {
-            'url'('https://github.com/Madhu427/cart1.git')
-          }
+def COMPONENTS = ["cart","catalogue"]
+
+def SIZE = COMPONENTS.size -1
+
+for(i in 0..SIZE){
+    def j = COMPONENTS[i]
+    pipelineJob('CI-Pipelines/cart1') {
+        configure { flowdefinition ->
+            flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
+                'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
+                    'userRemoteConfigs' {
+                        'hudson.plugins.git.UserRemoteConfig' {
+                            'url'('https://github.com/Madhu427/cart1.git')
+                        }
+                    }
+                    'branches' {
+                        'hudson.plugins.git.BranchSpec' {
+                            'name'('*/main')
+                        }
+                    }
+                }
+                'scriptPath'('Jenkinsfile')
+                'lightweight'(true)
+            }
         }
-        'branches' {
-          'hudson.plugins.git.BranchSpec' {
-            'name'('*/main')
-          }
-        }
-      }
-      'scriptPath'('Jenkinsfile')
-      'lightweight'(true)
     }
-  }
 }
+
