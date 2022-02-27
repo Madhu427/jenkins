@@ -3,7 +3,7 @@ def call() {
 
 
         agent {
-            label 'BUILD_LABEL'
+            label '${BUILD_LABEL}'
         }
 
         triggers {
