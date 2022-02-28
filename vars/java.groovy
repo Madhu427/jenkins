@@ -21,6 +21,11 @@ def call() {
                     sh 'mvn compile'
                 }
             }
+            stage('Lint checks') {
+                steps{
+                    sh 'echo test cases'
+                }
+            }
             stage('Test the code') {
                 steps{
                     sh 'echo test the code'
