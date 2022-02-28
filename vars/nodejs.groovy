@@ -24,6 +24,7 @@ def call() {
             stage('Test the code') {
                 steps{
                     sh 'echo test the code'
+                    common.sonarQube()
                 }
             }
             stage('Deploy the code') {
