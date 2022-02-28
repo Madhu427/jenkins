@@ -13,7 +13,7 @@ def call() {
 
         }
 
-#
+
         stages{
             // for nodejs and python no need to compile the code
 //            stage('Compile the code') {
@@ -23,11 +23,15 @@ def call() {
 //                }
 //            }
             stage('Check the code quality') {
-                steps{
-                    sh 'echo test the code'
-                    script{
+                steps {
+                    script {
                         common.sonarQube()
                     }
+                }
+            }
+            stage('Lint checks') {
+                steps {
+                    sh 'echo test cases'
                 }
             }
             stage('Deploy the code') {
