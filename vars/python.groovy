@@ -22,9 +22,12 @@ def call() {
 
 //                }
 //            }
-            stage('Test the code') {
+            stage('Check the code quality') {
                 steps{
                     sh 'echo test the code'
+                    script {
+                        common.sonarQube()
+                    }
                 }
             }
             stage('Deploy the code') {
