@@ -30,7 +30,7 @@ def call() {
                     sh 'echo deploy the code'
                 }
             }
-            post{
+        post{
                 always{
                     cleanWs()
                 }
