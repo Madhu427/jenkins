@@ -25,7 +25,7 @@ def call() {
                 steps{
                     sh 'echo test the code'
                      script {
-                        common.sonarQube()
+                        common.sonarQube("cart","nodejs")
                      }
                 }
             }
