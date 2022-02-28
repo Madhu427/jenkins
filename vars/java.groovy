@@ -19,6 +19,9 @@ def call() {
                 steps{
                     sh 'echo compile the ${COMPONENT}  code'
                     sh 'mvn compile'
+                    script {
+                        common.sonarQube()
+                    }
                 }
             }
             stage('Lint checks') {
