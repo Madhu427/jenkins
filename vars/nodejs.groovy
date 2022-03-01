@@ -7,10 +7,7 @@ def call() {
         }
 
         triggers {
-
             pollSCM('H/2 * * * *')
-
-
         }
 
 
