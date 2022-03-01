@@ -14,7 +14,7 @@ def call() {
         }
 
 
-        stages{
+        stages {
             // for node js & python no need to compile thw code skip it
 //            stage('Compile the code') {
 //                steps{
@@ -22,41 +22,42 @@ def call() {
 //                }
 //            }
             stage('Test the code') {
-                steps{
+                steps {
                     sh 'echo test the code'
-                     script {
+                    script {
                         common.sonarQube()
-                     }
+                    }
                 }
             }
 
             stage('Deploy the code') {
-                steps{
+                steps {
                     sh 'echo deploy the code'
                 }
             }
-        }
 
-        stage('Publish Artifacts') {
+
+            stage('Publish Artifacts') {
 //            when {
 //                expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) }
 //            }
-            steps {
-                script {
+                steps {
+                    script {
 
-                    common.publishArtifacts()
+                        common.publishArtifacts()
+                    }
+                }
+            }
+
+            post {
+                always {
+                    cleanWs()
                 }
             }
         }
 
-        post {
-            always {
-                cleanWs()
-            }
-        }
+
     }
-
-
-}
+ }
 
 
