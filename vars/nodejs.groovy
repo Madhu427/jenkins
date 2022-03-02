@@ -46,10 +46,10 @@ def call() {
                 }
             }
             post{
-               always{
+                always {
                     cleanWs()
                 }
-           }
+            }
         }
 
 
