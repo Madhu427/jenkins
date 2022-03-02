@@ -20,7 +20,7 @@ def call() {
 //            }
             stage('label the builds') {
                 steps {
-                   def gitTag = GIT_BRANCH.spilt('/').last()
+                   def gitTag = GIT_BRANCH.spilt('/').last() | awk -F '{print $NF}'
                     addShortText background: '', borderColor: '', color: 'red', link: '', text: 'DEMO'
                 }
             }
