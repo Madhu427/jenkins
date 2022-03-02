@@ -20,8 +20,10 @@ def call() {
 //            }
             stage('label the builds') {
                 steps {
-                   def gitTag = GIT_BRANCH.spilt('/').last()
-                    addShortText background: '', borderColor: '', color: 'red', link: '', text: '${gitTag}'
+                     script {
+                         def gitTag = GIT_BRANCH.spilt('/').last()
+                         addShortText background: '', borderColor: '', color: 'red', link: '', text: '${gitTag}'
+                     }
                 }
             }
             stage('Test the code') {
