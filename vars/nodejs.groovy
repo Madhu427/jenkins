@@ -31,6 +31,7 @@ def call() {
                     sh 'echo test the code'
                     script {
                         common.sonarQube()
+                        sh 'env'
                     }
                 }
             }
