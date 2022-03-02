@@ -26,7 +26,7 @@ def call() {
             stage('label the builds') {
                 steps {
                      script {
-                         def gitTag = GIT_BRANCH.split('/').last()
+                         env.def gitTag = GIT_BRANCH.split('/').last()
                          addShortText background: '', borderColor: '', color: 'red', link: '', text: "${gitTag}"
                      }
                 }
