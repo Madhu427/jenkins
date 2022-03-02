@@ -46,8 +46,8 @@ def call() {
                 }
             }
 
-            post{
-                always{
+            post {
+                always {
                     cleanWs()
                 }
             }
