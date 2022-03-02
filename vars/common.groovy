@@ -16,7 +16,7 @@ def publishArtifacts() {
 }
 
 def prepareArtifacts() {
-if(env.PROG_LANG_NAME == 'nodejs' && env.PROG_LANG_VERSION == '6') {
+ if(env.PROG_LANG_NAME == "nodejs" && env.PROG_LANG_VERSION == "6") {
     sh '''npm install
     ls -ltr
     '''
