@@ -55,7 +55,7 @@ def call() {
                  steps {
                     script {
 
-//                        common.publishArtifacts() 
+                         common.publishArtifacts()
                           common.prepareArtifacts()
                     }
                 }
