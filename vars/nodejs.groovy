@@ -18,6 +18,12 @@ def call() {
 //                    sh 'echo compile the ${COMPONENT}  code'
 //                }
 //            }
+            stage('label the builds') {
+                steps {
+                   def gitTag = GIT_BRANCH.spilt('/').last()
+                    addShortText background: '', borderColor: '', color: 'red', link: '', text: 'DEMO'
+                }
+            }
             stage('Test the code') {
                 steps {
                     sh 'echo test the code'
