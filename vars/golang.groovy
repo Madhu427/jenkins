@@ -15,9 +15,14 @@ def call() {
 
 
         stages{
-            stage('Compile the code') {
+            stage('label the builds') {
                 steps{
                     sh 'echo compile the ${COMPONENT}  code'
+                    script {
+                        def gitTag = GIT_BRANCH.split('/').last()
+                        addShortText background: '', borderColor: '', color: 'red', link: '', text: "${gitTag}"
+                    }
+
                 }
             }
             stage('Test the code') {
