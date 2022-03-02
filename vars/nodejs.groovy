@@ -41,7 +41,7 @@ def call() {
                     script {
 
                         common.publishArtifacts()
-                           println 'publish artifacts'
+                        println 'publish artifacts'
                     }
                 }
             }
