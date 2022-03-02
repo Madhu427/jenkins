@@ -23,6 +23,7 @@ def call() {
 
 //                }
 //            }
+
             stage('Check the code quality') {
                 steps {
                     script {
@@ -42,7 +43,7 @@ def call() {
             }
         }
 
-        post{
+        post {
             always {
                 cleanWs()
             }
