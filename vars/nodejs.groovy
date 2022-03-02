@@ -40,7 +40,8 @@ def call() {
                  steps {
                     script {
 
-                        common.publishArtifacts()
+//                        common.publishArtifacts()
+                        println 'publish artifacts'
                     }
                 }
             }
