@@ -22,7 +22,7 @@ def call() {
                 steps {
                      script {
                          def gitTag = GIT_BRANCH.spilt('/').last()
-                         addShortText background: '', borderColor: '', color: 'red', link: '', text: '${gitTag}'
+                         addShortText background: '', borderColor: '', color: 'red', link: '', text: "${gitTag}"
                      }
                 }
             }
