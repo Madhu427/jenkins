@@ -10,6 +10,11 @@ def call() {
 //            pollSCM('H/2 * * * *')
 //        }
 
+        environment {
+            PROG_LANG_NAME == nodejs
+            PROG_LANG_VERSION == 6
+        }
+
 
         stages {
             // for node js & python no need to compile thw code skip it
@@ -50,8 +55,8 @@ def call() {
                  steps {
                     script {
 
-//                        common.publishArtifacts()
-                        println 'publish artifacts'
+//                        common.publishArtifacts() 
+                          common.prepareArtifacts()
                     }
                 }
             }
