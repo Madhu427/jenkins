@@ -23,7 +23,6 @@ def prepareArtifacts() {
  if(env.PROG_LANG_NAME == "nodejs" && env.PROG_LANG_VERSION == "6") {
     sh '''npm install
     zip -r ${COMPONENT}-${gitTag}.zip node_modules server.js
-    ls -ltr
-    '''
+    ls -ltr'''
  }
 }
