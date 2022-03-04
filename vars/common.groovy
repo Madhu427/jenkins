@@ -31,8 +31,8 @@ def prepareArtifacts() {
         sh '''
         mvn clean package
         ls -ltr
-        mv target/shipping-1.0.jar shipping.jar
-        zip -r shipping-${gitTag}.zip shipping.jar
+        mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+        zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
         '''
         //instead of COMPONENT we are giving shipping
     }
