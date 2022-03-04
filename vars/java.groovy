@@ -59,6 +59,7 @@ def call() {
             stage('Deploy the code') {
                 steps{
                     sh 'echo deploy the code'
+                    sh 'env'
                 }
             }
             stage('Publish Artifacts') {
