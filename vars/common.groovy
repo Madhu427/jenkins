@@ -22,11 +22,11 @@ def publishArtifacts() {
 
 def prepareArtifacts() {
     //nodejs
- if(env.PROG_LANG_NAME == "nodejs" && env.PROG_LANG_VERSION == "6") {
+    if(env.PROG_LANG_NAME == "nodejs" && env.PROG_LANG_VERSION == "6") {
     sh '''npm install
     zip -r ${COMPONENT}-${gitTag}.zip node_modules server.js
     ls -ltr'''
- }
+     }
 
     if(env.PROG_LANG_NAME == "java" && env.PROG_LANG_VERSION == "1.8") {
         sh '''
