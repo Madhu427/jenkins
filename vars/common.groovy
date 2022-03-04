@@ -15,7 +15,6 @@ def publishArtifacts() {
 //  }
 
     sh'''
-      env
       curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${gitTag}.zip http://nexus.roboshop.internal:8081/repository/${COMPONENT}/${COMPONENT}-${gitTag}.zip
   '''
 }
@@ -29,8 +28,7 @@ def prepareArtifacts() {
      }
 
     if(env.PROG_LANG_NAME == "java" && env.PROG_LANG_VERSION == "1.8") {
-        sh '''
-        mvn clean package
+        sh '''mvn clean package
         mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
         zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
         '''
