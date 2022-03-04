@@ -13,6 +13,13 @@ def call() {
 //
 //        }
 
+        environment {
+            PROG_LANG_NAME = "java"
+            PROG_LANG_VERSION = "1.8"
+            NEXUS = credentials('NEXUS')
+        }
+
+
 
         stages{
             stage('Compile the code') {
@@ -29,6 +36,14 @@ def call() {
                     sh 'echo test cases'
                 }
             }
+            stage('label the builds') {
+                steps {
+                    script {
+                        env.gitTag = GIT_BRANCH.split('/').last()
+                        addShortText background: '', borderColor: '', color: 'red', link: '', text: "${gitTag}"
+                    }
+                }
+            }
             stage('Test the code') {
                 steps{
                     sh 'echo test the code'
@@ -37,6 +52,16 @@ def call() {
             stage('Deploy the code') {
                 steps{
                     sh 'echo deploy the code'
+                }
+            }
+            stage('Publish Artifacts') {
+                when{
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
+                steps {
+                    script {
+                        common.prepareArtifacts()
+                        common.publishArtifacts()
+                    }
                 }
             }
         }
