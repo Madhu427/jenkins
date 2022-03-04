@@ -13,6 +13,13 @@ def call() {
 //
 //        }
 
+        environment {
+            PROG_LANG_NAME = "golang"
+            PROG_LANG_VERSION = "1.5"
+            NEXUS = credentials('NEXUS')
+        }
+
+
 
         stages{
             stage('label the builds') {
@@ -33,6 +40,17 @@ def call() {
             stage('Deploy the code') {
                 steps{
                     sh 'echo deploy the code'
+                }
+            }
+            stage('Publish Artifacts') {
+                when {
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) }
+                }
+                steps {
+                    script {
+                        common.prepareArtifacts()
+                        common.publishArtifacts()
+                    }
                 }
             }
 
