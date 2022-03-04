@@ -22,10 +22,25 @@ def call() {
 
 
         stages{
+
+            stage('label the builds') {
+                steps {
+                    script {
+                        env.gitTag = GIT_BRANCH.split('/').last()
+                        addShortText background: '', borderColor: '', color: 'red', link: '', text: "${gitTag}"
+                    }
+                }
+            }
             stage('Compile the code') {
                 steps{
                     sh 'echo compile the ${COMPONENT}  code'
                     sh 'mvn compile'
+
+                }
+            }
+
+            stage('Check the code quality') {
+                steps{
                     script {
                         common.sonarQube()
                     }
@@ -36,14 +51,7 @@ def call() {
                     sh 'echo test cases'
                 }
             }
-            stage('label the builds') {
-                steps {
-                    script {
-                        env.gitTag = GIT_BRANCH.split('/').last()
-                        addShortText background: '', borderColor: '', color: 'red', link: '', text: "${gitTag}"
-                    }
-                }
-            }
+
             stage('Test the code') {
                 steps{
                     sh 'echo test the code'
