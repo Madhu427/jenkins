@@ -54,10 +54,10 @@ def call() {
                when{
                  expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
                  steps {
-                     sh 'env'
                     script {
+                        common.prepareArtifacts()
                          common.publishArtifacts()
-                         common.prepareArtifacts()
+                         
                     }
                 }
             }
