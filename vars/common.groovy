@@ -30,6 +30,7 @@ def prepareArtifacts() {
     if(env.PROG_LANG_NAME == "java" && env.PROG_LANG_VERSION == "1.8") {
         sh '''
         mvn clean package
+        ls -ltr
         mv target/shipping-1.0.jar shipping.jar
         zip -r shipping-${gitTag}.zip shipping.jar
         '''
