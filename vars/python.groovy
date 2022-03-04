@@ -13,6 +13,12 @@ def call() {
 //
 //        }
 
+        environment {
+            PROG_LANG_NAME = "python"
+            PROG_LANG_VERSION = "3"
+            NEXUS = credentials('NEXUS')
+        }
+
 
         stages{
 
@@ -23,6 +29,15 @@ def call() {
 
 //                }
 //            }
+
+            stage('Label Builds') {
+                steps {
+                    script {
+                        env.gitTag = GIT_BRANCH.split('/').last()
+                        addShortText background: 'white', borderColor: 'white', color: 'red', link: '', text: "${gitTag}"
+                    }
+                }
+            }
 
             stage('Check the code quality') {
                 steps {
@@ -36,9 +51,20 @@ def call() {
                     sh 'echo test cases'
                 }
             }
-            stage('Deploy the code') {
+            stage('test cases') {
                 steps{
-                    sh 'echo deploy the code'
+                    sh 'echo test cases'
+                }
+            }
+            stage('Publish Artifacts') {
+                when {
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) }
+                }
+                steps {
+                    script {
+                        common.prepareArtifacts()
+                        common.publishArtifacts()
+                    }
                 }
             }
         }
