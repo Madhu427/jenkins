@@ -31,8 +31,8 @@ def prepareArtifacts() {
     if(env.PROG_LANG_NAME == "java" && env.PROG_LANG_VERSION == "1.8") {
         sh '''
         mvn clean package
-        mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar'''
-        zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
+        mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+        zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar'''
     }
 
 }
