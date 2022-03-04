@@ -55,6 +55,7 @@ def prepareArtifacts() {
         sh '''
       cd static
       zip -r ../${COMPONENT}-${gitTag}.zip * 
+      ls -ltr
     '''
     }
 
