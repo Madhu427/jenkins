@@ -55,10 +55,8 @@ def call() {
                  expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
                  steps {
                     script {
-
                         common.prepareArtifacts()
-                         common.publishArtifacts()
-
+                        common.publishArtifacts()
                     }
                 }
             }
