@@ -30,9 +30,10 @@ def prepareArtifacts() {
     if(env.PROG_LANG_NAME == "java" && env.PROG_LANG_VERSION == "1.8") {
         sh '''
         mvn clean package
-        mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-        zip -r ${COMPONENT}-${gitTag}.zip ${COMPONENT}.jar
+        mv target/shipping-1.0.jar shipping.jar
+        zip -r shipping-${gitTag}.zip shipping.jar
         '''
+        //instead of COMPONENT we are giving shipping
     }
 
     if(env.PROG_LANG_NAME == "python" && env.PROG_LANG_VERSION == "3") {
