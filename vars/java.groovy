@@ -1,7 +1,6 @@
 def call() {
     pipeline {
 
-
         agent {
             label "${BUILD_LABEL}"
         }
