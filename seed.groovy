@@ -44,7 +44,7 @@ folder('CI-Pipelines') {
 }
 
 // shipping
-def COMPONENTS = ["cart1","catalogue1","user1","dispatch1","shipping","payment1","frontend1"]
+def COMPONENTS = ["cart1","catalogue","user1","dispatch1","shipping","payment1","frontend1"]
 
 def SIZE = COMPONENTS.size -1
 
