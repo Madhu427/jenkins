@@ -4,6 +4,10 @@ def call() {
             label "${BUILD_LABEL}"
         }
 
+        options {
+            ansiColor('xterm')
+        }
+
 //    triggers {
 //      pollSCM('H/2 * * * *')
 //    }
