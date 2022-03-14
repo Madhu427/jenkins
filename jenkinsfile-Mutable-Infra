@@ -12,7 +12,7 @@ pipeline {
           stage('Get Git Repo') {
             steps {
              dir('code') {
-             git 'https://github.com/Madhu427/${COMPONENT}.git'
+             git branch: 'main', url: 'https://github.com/Madhu427/${COMPONENT}.git'
               }
             }
 
