@@ -97,3 +97,25 @@ pipelineJob('Mutable/VPC') {
         }
     }
 }
+
+
+pipelineJob('Mutable/APP-SETUP') {
+    configure { flowdefinition ->
+        flowdefinition << delegate.'definition'(class: 'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition', plugin: 'workflow-cps') {
+            'scm'(class: 'hudson.plugins.git.GitSCM', plugin: 'git') {
+                'userRemoteConfigs' {
+                    'hudson.plugins.git.UserRemoteConfig' {
+                        'url'("https://github.com/Madhu427/jenkins.git")
+                    }
+                }
+                'branches' {
+                    'hudson.plugins.git.BranchSpec' {
+                        'name'('*/master')
+                    }
+                }
+            }
+            'scriptPath'('jenkinsfile-Mutable-Infra')
+            'lightweight'(true)
+        }
+    }
+}

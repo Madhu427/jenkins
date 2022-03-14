@@ -1,0 +1,35 @@
+pipeline {
+   agent {
+    label 'WORKSTATION'
+   }
+
+    parameters {
+              choice(name: 'ENVIRONMENT', choices: ['', 'dev', 'prod'], description: 'Pick Environment')
+              string(name: 'COMPONENT', defaultValue: '', description: 'Which component')
+    }
+
+    stages {
+          stage('Get Git Repo') {
+            steps {
+             dir('code') {
+             git 'https://github.com/Madhu427/${COMPONENT}.git'
+              }
+            }
+
+          }
+          
+          stage('Terraform apply') {
+           steps {
+              dir('code') {
+                sh '''
+                cd terraform-mutable
+                terraform init -backend-config=env/${ENV}-backend.tfvars
+                terraform apply -auto-approve -var-file=${ENV}.vars
+                '''
+              }
+           }
+          }
+    }
+
+
+}
