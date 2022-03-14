@@ -110,7 +110,7 @@ pipelineJob('Mutable/APP-SETUP') {
                 }
                 'branches' {
                     'hudson.plugins.git.BranchSpec' {
-                        'name'('*/main')
+                        'name'('*/master')
                     }
                 }
             }
