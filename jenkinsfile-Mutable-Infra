@@ -17,14 +17,14 @@ pipeline {
             }
 
           }
-          
+
           stage('Terraform apply') {
            steps {
               dir('code') {
                 sh '''
                 cd terraform-mutable
                 terraform init -backend-config=env/${ENV}-backend.tfvars
-                terraform apply -auto-approve -var-file=${ENV}.vars
+                terraform apply -auto-approve -var-file=${ENV}.tfvars
                 '''
               }
            }
