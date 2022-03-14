@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                 cd terraform-mutable
                 terraform init -backend-config=env/${ENV}-backend.tfvars
-                terraform apply -auto-approve -var-file=${ENV}.tfvars
+                terraform apply -auto-approve -var-file=env/${ENV}.tfvars
                 '''
               }
            }
