@@ -120,7 +120,7 @@ pipelineJob('Mutable/APP-SETUP') {
     }
 }
 
-pipelineJob('Mutable/VPC') {
+pipelineJob('Mutable/ALB') {
     configure { flowdefinition ->
         flowdefinition << delegate.'definition'(class: 'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition', plugin: 'workflow-cps') {
             'scm'(class: 'hudson.plugins.git.GitSCM', plugin: 'git') {
