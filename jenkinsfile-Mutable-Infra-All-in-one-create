@@ -27,7 +27,7 @@ pipeline {
 
 
              stage('ALB-n-DB') {
-               parllel {
+               parallel {
 
                stage('DB') {
                 steps {
