@@ -63,7 +63,7 @@ pipeline {
 
              stage('BACKEND') {
                parallel {
-                   stage ('CART')
+                   stage ('CART') {
                        steps {
                            dir('cart')
                            git branch: 'main', url: 'https://github.com/Madhu427/cart.git'
@@ -127,7 +127,7 @@ pipeline {
                        '''
                      }
 
-                   }
+                  }
 
                      stage('USER') {
                        steps {
@@ -154,7 +154,9 @@ pipeline {
                        }
 
                     }
+
                }
+            }
 
 
   post {
