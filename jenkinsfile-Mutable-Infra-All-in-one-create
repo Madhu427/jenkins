@@ -60,13 +60,90 @@ pipeline {
               }
              }
 
-  }
+
+             stage('BACKEND') {
+               parallel {
+                   stage ('cart') {
+                       steps {
+                           dir('alb') {
+                           git branch: 'main', url: 'https://github.com/Madhu427/cart.git'
+                           sh'''
+                           cd terraform-mutable
+                           terraform init -backend-config=env/${ENV}-backend.tfvars
+                           terraform apply -auto-approve -var-filr=env/${ENV}.tfvars
+                           '''
+
+                           }
+
+                       }
+                   }
+
+                   stage('catalogue') {
+                      steps {
+                         dir('catalogue')
+                         sh'''
+                         cd terraform-mutable
+                         git branch: 'main', url: 'https://github.com/Madhu427/catalogue.git'
+                         terraform init -backend-config=env/${ENV}-backend.tfvars
+                         terraform apply -auto-approve -var-file=env${ENV}.tfvars
+                         '''
+                      }
+                   }
+
+                   stage('dispatch') {
+                     steps {
+                       dir('dispatch')
+                       sh'''
+                       cd terraform-mutable
+                       terraform init -backend.config=env/${ENV}-backend.tfvars
+                       terraform apply -auto-approve -var-file=env/${ENV}.tfvars
+                       '''
+                     }
+                   }
+
+                   stage('shipping') {
+                     steps {
+                       dir('shipping')
+                       sh'''
+                       cd terraform-mutable
+                       terraform init -backend-config=env/${ENV}-backend.tfvars
+                       terraform apply -auto-approve -var-file=env/${ENV}.tfvars
+                       '''
+                     }
+                   }
+
+                   stage('payment') {
+                     steps {
+                       dir('payment')
+                       sh'''
+                       cd terraform-mutable
+                       terraform init -backend.config=env/${ENV}-backend.tfvars
+                       terraform apply -auto-approve -var-file=env/${ENV}.tfvars
+                       '''
+                     }
+
+                   }
 
 
+                    stage('frontend1'){
+                       steps {
+                          dir('frontend1')
+                          sh'''
+                          cd terraform-mutable
+                          terraform init -backend.config=env/${ENV}-backend.tfvars
+                          terraform apply -auto-approve -var-file=env/${ENV}.tfvars
+                          '''
+                       }
 
+                    }
+               }
+             }
+       }
   post {
     always {
      cleanWs()
     }
   }
 }
+
+
