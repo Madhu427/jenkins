@@ -77,7 +77,7 @@ pipeline {
                            }
 
                        }
-                   }
+
 
                    stage('CATALOGUE') {
                       steps {
@@ -127,9 +127,9 @@ pipeline {
                        '''
                      }
 
-                  }
+                   }
 
-                     stage('USER') {
+                   stage('USER') {
                        steps {
                          dir('user')
                          sh'''
@@ -139,10 +139,10 @@ pipeline {
                          terraform apply -auto-approve -var-file=env/${ENV}.tfvars
                          '''
                        }
-                     }
+                   }
 
 
-                    stage('FRONTEND1'){
+                   stage('FRONTEND1'){
                        steps {
                           dir('frontend1')
                           sh'''
@@ -153,7 +153,7 @@ pipeline {
                           '''
                        }
 
-                    }
+                   }
 
                }
             }
