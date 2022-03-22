@@ -101,7 +101,7 @@ pipeline {
                        sh'''
                        export TF_VAR_APP_VERSION=1.0.0
                        cd terraform-mutable
-                       terraform init -backend.config=env/${ENV}-backend.tfvars
+                       terraform init -backend-config=env/${ENV}-backend.tfvars
                        terraform apply -auto-approve -var-file=env/${ENV}.tfvars
                        '''
                        }
@@ -129,7 +129,7 @@ pipeline {
                        sh'''
                        export TF_VAR_APP_VERSION=1.0.1
                        cd terraform-mutable
-                       terraform init -backend.config=env/${ENV}-backend.tfvars
+                       terraform init -backend-config=env/${ENV}-backend.tfvars
                        terraform apply -auto-approve -var-file=env/${ENV}.tfvars
                        '''
                        }
@@ -144,7 +144,7 @@ pipeline {
                          sh'''
                          export TF_VAR_APP_VERSION=1.0.1
                          cd terraform-mutable
-                         terraform init -backend.config=env/${ENV}-backend.tfvars
+                         terraform init -backend-config=env/${ENV}-backend.tfvars
                          terraform apply -auto-approve -var-file=env/${ENV}.tfvars
                          '''
                          }
@@ -159,7 +159,7 @@ pipeline {
                           sh'''
                           export TF_VAR_APP_VERSION=1.0.1
                           cd terraform-mutable
-                          terraform init -backend.config=env/${ENV}-backend.tfvars
+                          terraform init -backend-config=env/${ENV}-backend.tfvars
                           terraform apply -auto-approve -var-file=env/${ENV}.tfvars
                           '''
                           }
