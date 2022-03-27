@@ -152,10 +152,10 @@ pipeline {
                    }
 
 
-                   stage('FRONTEND1'){
+                   stage('FRONTEND'){
                        steps {
-                          dir('frontend1') {
-                          git branch: 'main', url: 'https://github.com/Madhu427/frontend1.git'
+                          dir('frontend') {
+                          git branch: 'main', url: 'https://github.com/Madhu427/frontend.git'
                           sh'''
                           export TF_VAR_APP_VERSION=1.0.1
                           cd terraform-mutable
