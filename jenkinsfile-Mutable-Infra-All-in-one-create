@@ -68,7 +68,7 @@ pipeline {
                            dir('cart') {
                            git branch: 'main', url: 'https://github.com/Madhu427/cart.git'
                            sh'''
-                           export TF_VAR_APP_VERSION=1.0.1
+                           export TF_VAR_APP_VERSION=1.0.2
                            cd terraform-mutable
                            terraform init -backend-config=env/${ENV}-backend.tfvars
                            terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -85,7 +85,7 @@ pipeline {
                          dir('catalogue') {
                          git branch: 'main', url: 'https://github.com/Madhu427/catalogue.git'
                          sh'''
-                         export TF_VAR_APP_VERSION=1.0.0
+                         export TF_VAR_APP_VERSION=1.0.1
                          cd terraform-mutable
                          terraform init -backend-config=env/${ENV}-backend.tfvars
                          terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -99,7 +99,7 @@ pipeline {
                        dir('dispatch') {
                        git branch: 'main', url: 'https://github.com/Madhu427/dispatch.git'
                        sh'''
-                       export TF_VAR_APP_VERSION=1.0.0
+                       export TF_VAR_APP_VERSION=1.0.1
                        cd terraform-mutable
                        terraform init -backend-config=env/${ENV}-backend.tfvars
                        terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -113,7 +113,7 @@ pipeline {
                        dir('shipping') {
                        git branch: 'main', url: 'https://github.com/Madhu427/shipping.git'
                        sh'''
-                       export TF_VAR_APP_VERSION=1.0.0
+                       export TF_VAR_APP_VERSION=1.0.1
                        cd terraform-mutable
                        terraform init -backend-config=env/${ENV}-backend.tfvars
                        terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -127,7 +127,7 @@ pipeline {
                        dir('payment') {
                        git branch: 'main', url: 'https://github.com/Madhu427/payment.git'
                        sh'''
-                       export TF_VAR_APP_VERSION=1.0.1
+                       export TF_VAR_APP_VERSION=1.0.2
                        cd terraform-mutable
                        terraform init -backend-config=env/${ENV}-backend.tfvars
                        terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -142,7 +142,7 @@ pipeline {
                          dir('user') {
                          git branch: 'main', url: 'https://github.com/Madhu427/user.git'
                          sh'''
-                         export TF_VAR_APP_VERSION=1.0.1
+                         export TF_VAR_APP_VERSION=1.0.2
                          cd terraform-mutable
                          terraform init -backend-config=env/${ENV}-backend.tfvars
                          terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -157,7 +157,7 @@ pipeline {
                           dir('frontend') {
                           git branch: 'main', url: 'https://github.com/Madhu427/frontend.git'
                           sh'''
-                          export TF_VAR_APP_VERSION=1.0.1
+                          export TF_VAR_APP_VERSION=1.0.2
                           cd terraform-mutable
                           terraform init -backend-config=env/${ENV}-backend.tfvars
                           terraform apply -auto-approve -var-file=env/${ENV}.tfvars
