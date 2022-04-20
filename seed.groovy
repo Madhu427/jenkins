@@ -61,6 +61,8 @@ for(i in 0..SIZE){
                     }
                     'branches' {
                         'hudson.plugins.git.BranchSpec' {
+                            'name'('*/tags/*')
+                        'hudson.plugins.git.BranchSpec' {
                             'name'('*/main')
                         }
                     }
