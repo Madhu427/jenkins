@@ -23,7 +23,7 @@ def makeAMI() {
 
     sh'''
       terraform init
-      terraform plan
+      terraform plan -var APP_VERSION=${gitTag}
       
     '''
 }
