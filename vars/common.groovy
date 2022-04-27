@@ -22,7 +22,9 @@ def publishArtifacts() {
 def makeAMI() {
 
     sh'''
-      terraform init 
+      terraform init
+      terraform plan
+      
     '''
 }
 
