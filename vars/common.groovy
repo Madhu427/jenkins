@@ -25,7 +25,7 @@ def makeAMI() {
       terraform init
       terraform plan -var APP_VERSION=${gitTag}
       terraform apply -auto-approve -var APP_VERSION=${gitTag}
-      ls
+      
     '''
 }
 
