@@ -68,7 +68,7 @@ pipeline {
                            dir('cart') {
                            git branch: 'main', url: 'https://github.com/Madhu427/cart.git'
                            sh'''
-                           export TF_VAR_APP_VERSION=1.0.2
+                           export TF_VAR_APP_VERSION=1.0.3
                            cd terraform-immutable
                            terraform init -backend-config=env/${ENV}-backend.tfvars
                            terraform apply -auto-approve -var-file=env/${ENV}.tfvars
@@ -127,7 +127,7 @@ pipeline {
                        dir('payment') {
                        git branch: 'main', url: 'https://github.com/Madhu427/payment.git'
                        sh'''
-                       export TF_VAR_APP_VERSION=1.0.4
+                       export TF_VAR_APP_VERSION=1.0.3
                        cd terraform-immutable
                        terraform init -backend-config=env/${ENV}-backend.tfvars
                        terraform apply -auto-approve -var-file=env/${ENV}.tfvars
