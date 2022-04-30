@@ -45,7 +45,7 @@ pipeline {
                stage('ALB') {
                   steps {
                     dir('alb') {
-                    git branch: 'master', url: 'https://github.com/Madhu427/terraform-mutable-alb.git'
+                    git branch: 'master', url: 'https://github.com/Madhu427/terraform-immutable-alb.git'
                     sh'''
                     terraform init -backend-config=env/${ENV}-backend.tfvars
                     terraform apply -auto-approve -var-file=env/${ENV}.tfvars
