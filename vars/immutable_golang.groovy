@@ -20,10 +20,9 @@ def call() {
         }
 
 
-
-        stages{
+        stages {
             stage('label the builds') {
-                steps{
+                steps {
                     sh 'echo compile the ${COMPONENT}  code'
                     script {
                         env.gitTag = GIT_BRANCH.split('/').last()
@@ -33,18 +32,18 @@ def call() {
                 }
             }
             stage('Test the code') {
-                steps{
+                steps {
                     sh 'echo test the code'
                 }
             }
             stage('Deploy the code') {
-                steps{
+                steps {
                     sh 'echo deploy the code'
                 }
             }
             stage('Publish Artifacts') {
                 when {
-                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) }
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true']) }
                 }
                 steps {
                     script {
@@ -56,7 +55,7 @@ def call() {
 
             stage('publish AMI') {
                 when {
-                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) }
+                    expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true']) }
                 }
                 steps {
                     script {
@@ -66,13 +65,12 @@ def call() {
 
             }
 
-        post {
-            always {
-                cleanWs()
+            post {
+                always {
+                    cleanWs()
+                }
             }
+
         }
-
     }
-
-
 }
