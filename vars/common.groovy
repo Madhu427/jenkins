@@ -25,7 +25,7 @@ def makeAMI() {
       terraform init
       terraform plan -var APP_VERSION=${gitTag}
       terraform apply -auto-approve -var APP_VERSION=${gitTag}
-      terraform state rm module.cart-ami.aws_ami_from_instance.ami
+      terraform state rm module.${COMPONENT}-ami.aws_ami_from_instance.ami
       terraform destroy -auto-approve -var APP_VERSION=${gitTag} 
     '''
 }
