@@ -19,7 +19,6 @@ def call() {
         }
 
 
-
         stages {
 
             stage('label the builds') {
@@ -91,6 +90,6 @@ def call() {
             }
         }
 
-
+    }
 
 }
